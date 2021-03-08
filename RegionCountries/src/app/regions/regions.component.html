@@ -1,0 +1,53 @@
+<div class="list-group-item clearfix">
+    <div class="row">
+      <div class="col-md-3">
+        <label for="regions" style="font-weight: bold;">Region</label>
+      </div>
+      <div class="col-md-9">
+        <select
+          name="regions"
+          id="regions"
+          (change)="onRegion(regionList.value)"
+          #regionList
+        >
+          <option value="">Select Region</option>
+          <option
+            *ngFor="let region of (regions$ | async).regions"
+            [value]="region.name"
+            >{{ region.name }}</option
+          >
+        </select>
+      </div>
+    </div>
+    <hr />
+    <div class="row" *ngIf="regionList.value">
+      <div class="col-md-3">
+        <label for="countries" style="font-weight: bold;">Country</label>
+      </div>
+      <div class="col-md-9">
+        <select name="countries" id="countries" #countryDropdown>
+          <option value="">Select Country</option>
+          <option
+            *ngFor="let country of (countries$ | async).countries"
+            [value]="country.name"
+            >{{ country.name }}</option
+          >
+        </select>
+        <button
+          style="margin-left: 10px;"
+          class="btn btn-info btn-sm"        
+          (click)="onLoadCountry(countryDropdown.selectedIndex)"
+        >
+          Load
+        </button>
+      </div>
+    </div>
+    <hr *ngIf="regionList.value" />
+    <div class="row">
+      <div class="col-md-12">
+        <app-country-details
+          *ngIf="selectedIndex > -1"
+        ></app-country-details>
+      </div>
+    </div>
+  </div>  

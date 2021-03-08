@@ -1,0 +1,40 @@
+<div class="list-group-item clearfix">
+  <div class="list-group-item-text" class="row">
+    <div class="col-md-2"><strong>Country</strong></div>
+    <div class="col-md-2">
+      {{ country?.name }}
+    </div>
+  </div>
+  <hr />
+  <div class="list-group-item-text" class="row">
+    <div class="col-md-2"><strong>Capital</strong></div>
+    <div class="col-md-2">
+      {{ country?.capital }}
+    </div>
+  </div>
+  <hr />
+  <div class="list-group-item-text" class="row">
+    <div class="col-md-2"><strong>Population</strong></div>
+    <div class="col-md-2">
+      {{ country?.population }}
+    </div>
+  </div>
+  <hr />
+
+  <div class="list-group-item-text" class="row">
+    <div class="col-md-2"><strong>Currencies</strong></div>
+    <div class="col-md-4">
+      <p *ngFor="let currency of country?.currencies">
+        {{ currency?.name }}
+      </p>
+    </div>
+  </div>
+
+  <hr />
+  <div class="list-group-item-text" class="row">
+    <div class="col-md-2"><strong>Flag</strong></div>
+    <div class="col-md-10">
+      <img src="{{ country?.flag }}" class="img-fluid" />
+    </div>
+  </div>
+</div>
